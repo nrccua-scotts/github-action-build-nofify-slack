@@ -1,0 +1,48 @@
+name: Push Slack Notificartion
+description: Call after a completed build to notify the appropriate slack channel (prod or nonprod)
+
+inputs:
+  app_name:
+    description: 'Application Name'
+    required: false
+  git_branch:
+    description: 'Git Branch'
+    required: false
+  git_sha:
+    description: 'Short Commit SHA'
+    required: false
+  deploy_env:
+    description: 'Deployment Environment (dev, stage, prod)'
+    required: false
+  deploy_url:
+    description: 'Application url'
+    required: false
+  prod_deploy:
+    description: 'Is this a production deployment?'
+    required: true
+    default: false
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set environment variables
+      shell: bash
+      run: |
+        GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+        echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+    - name: build slack message
+      shell: bash
+      run: |
+        PAYLOAD="{
+          \"blocks\":[
+            {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*APP_NAME "$GIT_BRANCH" Build Deployment*\"}},
+            {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"APP_NAME version COMMIT_SHA deployed to ENV environment\"}},
+            {\"type\":\"divider\"},
+            {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"BUILD on Github\",\"emoji\":true},\"value\":\"click_me_123\"},
+            {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Go to ENV\",\"emoji\":true},\"value\":\"click_me_123\"}]}
+         ]
+        }"
+
+        echo $PAYLOAD
+        curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" https://hooks.slack.com/services/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
+    
