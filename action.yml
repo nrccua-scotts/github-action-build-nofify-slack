@@ -21,6 +21,9 @@ inputs:
     description: 'Is this a production deployment?'
     required: true
     default: false
+  slack_url:
+    description: 'Channel to post update'
+    required: true
 
 runs:
   using: "composite"
@@ -44,5 +47,5 @@ runs:
         }"
 
         echo $PAYLOAD
-        curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" https://hooks.slack.com/services/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
+        curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" slack_url
     
