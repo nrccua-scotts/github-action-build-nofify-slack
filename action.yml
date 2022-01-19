@@ -47,5 +47,5 @@ runs:
         }"
 
         echo $PAYLOAD
-        curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" slack_url
+        curl -X POST -H 'Content-type: application/json' --data "$PAYLOAD" ${{ inputs.slack_url }}
     
