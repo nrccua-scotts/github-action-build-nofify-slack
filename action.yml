@@ -42,7 +42,7 @@ runs:
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"${{ inputs.app_name }} version ${{ inputs.git_sha }} deployed to ${{ inputs.git_branch }} environment\"}},
             {\"type\":\"divider\"},
             {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"BUILD on Github\",\"emoji\":true},\"value\":\"click_me_123\"},
-            {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Go to ENV\"},\"url\":\"www.google.com\"}]}
+            {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Go to ENV\"},\"value\":\"www.google.com\"}]}
          ]
         }"
 
