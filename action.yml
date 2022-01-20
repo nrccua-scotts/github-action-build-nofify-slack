@@ -38,7 +38,7 @@ runs:
       run: |
         PAYLOAD="{
           \"blocks\":[
-            {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*${{ inputs.app_name }} "$GIT_BRANCH" Build Deployment*\"}},
+            {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*${{ inputs.app_name }} ${{ inputs.git_branch }} Build Deployment*\"}},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"${{ inputs.app_name }} version ${{ inputs.git_sha }} deployed to ENV environment\"}},
             {\"type\":\"divider\"},
             {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"BUILD on Github\",\"emoji\":true},\"value\":\"click_me_123\"},
