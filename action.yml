@@ -41,7 +41,7 @@ runs:
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*${{ inputs.app_name }} ${{ inputs.git_branch }} Build Deployment*\"}},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"${{ inputs.app_name }} version ${{ inputs.git_sha }} deployed to ${{ inputs.git_branch }} environment\"}},
             {\"type\":\"divider\"},
-            {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"${{ inputs.git_sha }} on Github\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"https:\/\/github.com\/${{ inputs.app_name }}\"},
+            {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"${{ inputs.git_sha }} on Github\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"https:\/\/github.com\/${{ inputs.app_name }}\/${{ inputs.git_sha }}\"},
             {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Go to ENV\"},\"value\":\"www.google.com\",\"url\":\"https:\/\/github.com/\${{ inputs.git_sha }}\"}]}
          ]
         }"
