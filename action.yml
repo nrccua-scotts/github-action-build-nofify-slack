@@ -42,6 +42,7 @@ runs:
       run: |
         PAYLOAD="{
           \"blocks\":[
+            {\"type\":\"divider\"},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*${{ inputs.repo_name }} ${{ inputs.git_branch }} Build Deployment*\"}},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"$REPO_NAME version ${{ inputs.git_sha }} deployed to ${{ inputs.git_branch }} environment\"}},
             {\"type\":\"divider\"},
