@@ -37,7 +37,7 @@ runs:
         GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
         echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
         echo "REPO_NAME=$(echo '${{ inputs.app_name }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
-        echo "SHORT_SHA=$(echo '${{ inputs.git_sha :: 8}})" >> $GITHUB_ENV
+        echo "SHORT_SHA=$(echo '${{ inputs.git_sha }}' | cut -c1-7)" >> $GITHUB_ENV
     - name: build slack message
       shell: bash
       run: |
