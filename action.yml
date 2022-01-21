@@ -36,8 +36,7 @@ runs:
       run: |
         GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
         echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
-        export REPO_NAME=${{ inputs.app_name }}
-        echo $REPO_NAME
+        echo "REPO_NAME=${{ inputs.app_name }}" >> $GITHUB_ENV
     - name: build slack message
       shell: bash
       run: |
