@@ -5,25 +5,15 @@ inputs:
   app_name:
     description: 'Application Name'
     required: false
-  repo_name:
-    description: 'Repo Name'
-    required: false
   git_branch:
     description: 'Git Branch'
     required: false
   git_sha:
     description: 'Short Commit SHA'
     required: false
-  deploy_env:
-    description: 'Deployment Environment (dev, stage, prod)'
-    required: false
   deploy_url:
     description: 'Application url'
     required: false
-  prod_deploy:
-    description: 'Is this a production deployment?'
-    required: true
-    default: false
   slack_url:
     description: 'Channel to post update'
     required: true
