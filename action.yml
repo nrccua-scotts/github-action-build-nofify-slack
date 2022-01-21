@@ -42,11 +42,11 @@ runs:
       run: |
         PAYLOAD="{
           \"blocks\":[
-            {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*${{ inputs.repo_name }} ${{ inputs.git_branch }} Build Deployment*\"}},
+            {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*$REPO_NAME ${{ inputs.git_branch }} Build Deployment*\"}},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"$REPO_NAME version ${{ inputs.git_sha }} deployed to ${{ inputs.git_branch }} environment\"}},
             {\"type\":\"divider\"},
             {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"${{ inputs.git_sha }} on Github\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"https:\/\/github.com\/${{ inputs.app_name }}\/commit\/${{ inputs.git_sha }}\"},
-            {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"${{ inputs.git_sha }} on Github\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"https:\/\/github.com\/${{ inputs.app_name }}\/commit\/${{ inputs.git_sha }}\"}]}
+            {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Go to main\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"${{ inputs.deploy_url }}\"}]}
          ]
         }"
 
