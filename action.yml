@@ -37,6 +37,7 @@ runs:
         GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
         echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
         echo "REPO_NAME=$(echo '${{ inputs.app_name }}' | awk -F '/' '{print $2}')" >> $GITHUB_ENV
+        echo "SHORT_SHA=$(echo ${{{ inputs.git_sha }}::8})" >> $GITHUB_ENV
     - name: build slack message
       shell: bash
       run: |
@@ -45,7 +46,7 @@ runs:
             {\"type\":\"divider\"},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*$REPO_NAME $GIT_BRANCH Build Deployment*\"}},
             {\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"$REPO_NAME version \`${{ inputs.git_sha }}\` deployed to \`${{ inputs.git_branch }}\` environment\"}},
-            {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"$GIT_BRANCH on Github\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"https:\/\/github.com\/${{ inputs.app_name }}\/commit\/${{ inputs.git_sha }}\"},
+            {\"type\":\"actions\",\"elements\":[{\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"${{ inputs.git_sha }} on Github\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"https:\/\/github.com\/${{ inputs.app_name }}\/commit\/${{ inputs.git_sha }}\"},
             {\"type\":\"button\",\"text\":{\"type\":\"plain_text\",\"text\":\"Go to main\",\"emoji\":true},\"value\":\"click_me_123\",\"url\":\"${{ inputs.deploy_url }}\"}]}
          ]
         }"
