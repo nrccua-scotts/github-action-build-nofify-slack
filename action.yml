@@ -4,16 +4,16 @@ description: Call after a completed build to notify the appropriate slack channe
 inputs:
   app_name:
     description: 'Application Name'
-    required: false
+    required: true
   git_branch:
     description: 'Git Branch'
-    required: false
+    required: true
   git_sha:
     description: 'Short Commit SHA'
-    required: false
+    required: true
   deploy_url:
     description: 'Application url'
-    required: false
+    required: true
   slack_url:
     description: 'Channel to post update'
     required: true
